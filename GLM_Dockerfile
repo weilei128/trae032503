@@ -1,0 +1,14 @@
+FROM openjdk:8-jdk-alpine
+
+LABEL app="market-app" version="1.0.0"
+
+WORKDIR /app
+
+COPY GLM.jar /app/GLM.jar
+COPY data /app/data
+
+ENV JVM_OPTS="-Xms256m -Xmx512m"
+
+EXPOSE 10012
+
+ENTRYPOINT ["sh", "-c", "java $JVM_OPTS -jar /app/GLM.jar"]
